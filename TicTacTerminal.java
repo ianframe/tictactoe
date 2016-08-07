@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 public class TicTacTerminal
 {
 	private String[][] gameBoard;
-	private boolean isXturn = !true;
+	private boolean isXturn = true;
 	private int numOfTurns = 0;
 	
 	public TicTacTerminal()
