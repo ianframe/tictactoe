@@ -1,6 +1,6 @@
 import java.util.InputMismatchException;
 
-public class GameTerminal
+public class TicTacTerminal
 {
 	private static String[][] gameBoard;
 	private static boolean isXturn = !true;
