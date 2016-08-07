@@ -2,15 +2,18 @@ import java.util.InputMismatchException;
 
 public class TicTacTerminal
 {
-	private static String[][] gameBoard;
-	private static boolean isXturn = !true;
-	private static int numOfTurns = 0;
-
-	public static void main(String[] args)
+	private String[][] gameBoard;
+	private boolean isXturn = !true;
+	private int numOfTurns = 0;
+	
+	public TicTacTerminal()
 	{
-
 		setup();
 		printBoard();
+	}
+	
+	public void playGame()
+	{
 		while (!hasWinner() && numOfTurns <= 9)
 		{
 			int n = getPlayerInput();
@@ -23,7 +26,7 @@ public class TicTacTerminal
 			StdOut.println("It's a tie!");
 	}
 
-	public static void setup()
+	public void setup()
 	{
 		//create the grid to record player moves
 		gameBoard = new String[3][3];
@@ -36,7 +39,7 @@ public class TicTacTerminal
 			}
 	}
 
-	public static void printBoard()
+	public void printBoard()
 	{
 		StdOut.println();
 
@@ -56,7 +59,7 @@ public class TicTacTerminal
 		StdOut.println();
 	}
 
-	public static boolean hasWinner()
+	public boolean hasWinner()
 	{
 		if (checkRows())
 			return true;
@@ -67,7 +70,7 @@ public class TicTacTerminal
 		return false;
 	}
 
-	public static boolean checkRows()
+	public boolean checkRows()
 	{
 		for (String[] row : gameBoard)
 		{
@@ -79,7 +82,7 @@ public class TicTacTerminal
 		return false;
 	}
 
-	public static boolean checkCols()
+	public boolean checkCols()
 	{
 		for (int c = 0; c < gameBoard.length; c++)
 		{
@@ -91,7 +94,7 @@ public class TicTacTerminal
 		return false;
 	}
 
-	public static boolean checkDiags()
+	public boolean checkDiags()
 	{
 		//check top left to bottom right
 		if (gameBoard[0][0] == null || gameBoard[1][1] == null || gameBoard[2][2] == null)
@@ -107,7 +110,7 @@ public class TicTacTerminal
 		return false;
 	}
 
-	public static int getPlayerInput()
+	public int getPlayerInput()
 	{
 		StdOut.print("Where would you like to go? ");
 		try{
@@ -125,7 +128,7 @@ public class TicTacTerminal
 	**	4 |	5 | 6
 	**	7 | 8 | 9
 	*/
-	public static void drawSymbol(int n)
+	public void drawSymbol(int n)
 	{
 		String symbol;
 		if (isXturn)
