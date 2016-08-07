@@ -2,114 +2,98 @@ import java.util.InputMismatchException;
 
 public class GameTerminal
 {
-	private static String[][] gameBoard;
-	private static boolean isXturn = !true;
-	private static int numOfTurns = 0;
+	private static String[][] _____________;
+	private static boolean isXturn = _____________;
+	private static int gridNumber = _____________;
 
 	public static void main(String[] args)
 	{
 
-		setup();
-		printBoard();
-		while (!hasWinner() && numOfTurns <= 9)
+		_____________();
+		_____________();
+		while (_____________)
 		{
-			int n = getPlayerInput();
-			drawSymbol(n);
+			_____________ = getPlayerInput();
+			drawSymbol(_____________);
 			printBoard();
 		}
-		if (numOfTurns < 9)
-			StdOut.println("We have a winner!");
-		else
-			StdOut.println("It's a tie!");
+		
+		//What has occured in the game if you reach this line of code?
+		System.out.pritln(_____________);
+		
 	}
 
 	public static void setup()
 	{
 		//create the grid to record player moves
-		gameBoard = new String[3][3];
-		int gridNumber = 1;
-		for (int r = 0; r < gameBoard.length; r++)
-			for (int c = 0; c < gameBoard[0].length; c++)
+		gameBoard = new _____________;
+		int gridNumber = _____________;
+		for (_____________)
+			for (_____________)
 			{
-				gameBoard[r][c] = gridNumber + "";
-				gridNumber++;
+				gameBoard[_____________][_____________] = _____________;
+				_____________++;
 			}
 	}
 
 	public static void printBoard()
 	{
-		StdOut.println();
+		//You may or may not want to add some print statements to space things out to the board easier to read
 
-		for (int i = 0; i < gameBoard.length; i++)
+		for (_____________)
 		{
-			for (int j = 0; j < gameBoard[i].length; j++)
+			for (_____________)
 			{
-				if (gameBoard[i][j] == null) //space has not been played yet
+				if (gameBoard[r][c] == _____________) //space has not been played yet so it doesn't have a String here yet
 				{
-					StdOut.print("_\t");
+					_____________.print("_\t"); // \t is an escape character for a tab
 				}
 				else
-					StdOut.print(gameBoard[i][j] + "\t");
+					System.out.print(gameBoard[i][j] + "\t");
 			}
-			StdOut.println();
+			_____________();
 		}
-		StdOut.println();
+		
+		//You may or may not want to add some print statements to space things out to the board easier to read
 	}
 
 	public static boolean hasWinner()
 	{
-		if (checkRows())
+		if (checkRows() == _____________)
+			return _____________;
+		else if (checkCols() == _____________)
 			return true;
-		else if (checkCols())
+		else if (_____________())
 			return true;
-		else if (checkDiags())
-			return true;
-		return false;
+		else
+			return _____________;
 	}
 
 	public static boolean checkRows()
 	{
-		for (String[] row : gameBoard)
-		{
-			if (row[0] == null || row[1] == null || row[2] == null)
-			{}
-			else if (row[0].equals(row[1]) && row[1].equals(row[2]))
-				return true;
-		}
-		return false;
+		//to be implemented by you. don't forget to check for null Strings first to avoid a runtime null point exception
 	}
 
 	public static boolean checkCols()
 	{
-		for (int c = 0; c < gameBoard.length; c++)
-		{
-			if (gameBoard[0][c] == null || gameBoard[1][c] == null || gameBoard[2][c] == null)
-			{}
-			else if (gameBoard[0][c].equals(gameBoard[1][c]) && gameBoard[1][c].equals(gameBoard[2][c]))
-				return true;
-		}		
-		return false;
+		//to be implemented by you. don't forget to check for null Strings first to avoid a runtime null point exception
+		//this method sure does seem AWFULLY similar to checkRows(). Hmmmm....
+
 	}
 
 	public static boolean checkDiags()
 	{
-		//check top left to bottom right
-		if (gameBoard[0][0] == null || gameBoard[1][1] == null || gameBoard[2][2] == null)
-		{}
-		else if(gameBoard[0][0].equals(gameBoard[1][1]) && gameBoard[1][1].equals(gameBoard[2][2]))
-			return true;
-		//check top right to bottom left
-		if (gameBoard[0][2] == null || gameBoard[1][1] == null || gameBoard[2][0] == null)
-		{}
-		else if(gameBoard[0][2].equals(gameBoard[1][1]) && gameBoard[1][1].equals(gameBoard[2][0]))
-			return true;
-		//no diagonal matches, so no winner yet
-		return false;
+		//to be implemented by you. don't forget to check for null Strings first to avoid a runtime null point exception
+		//this method sure does seem AWFULLY similar to checkRows() and checkCols(). Hmmmm....
 	}
-
+	
+	
+	//this method returns an integer typed into the terminal by the user to indicate which square they would like to play
 	public static int getPlayerInput()
 	{
-		StdOut.print("Where would you like to go? ");
+		//provide a message to the user about where they would like to play an X or O
+		System.out.println(_____________);
+		//i've handled the user input here for you. no need to add anything else for this method
 		try{
 			return StdIn.readInt();
 		}
@@ -121,43 +105,30 @@ public class GameTerminal
 	}
 
 	/* Grid layout is as follows:
-	**	1 |	2 | 3
-	**	4 |	5 | 6
+	**	1 | 2 | 3
+	**	4 | 5 | 6
 	**	7 | 8 | 9
 	*/
 	public static void drawSymbol(int n)
 	{
 		String symbol;
-		if (isXturn)
-			symbol = "X";
+		if (isXturn == _____________)
+			symbol = _____________;
 		else
-			symbol = "O";
-		if (n < 1 || n > 9)
+			symbol = _____________;
+		if (_____________)
 		{
 			StdOut.println("Come on, yo. That's not a valid number. Try again.");
-			isXturn = ! isXturn;
+			//change the marker for whose turn it is
+			isXturn = !isXturn;
 		}
-		else if (n == 1)
-			gameBoard[0][0] = symbol;
-		else if (n == 2)
-			gameBoard[0][1] = symbol;
-		else if (n ==3 )
-			gameBoard[0][2] = symbol;
-		else if (n == 4)
-			gameBoard[1][0] = symbol;
-		else if (n == 5)
-			gameBoard[1][1] = symbol;
-		else if (n == 6)
-			gameBoard[1][2] = symbol;
-		else if (n == 7)
-			gameBoard[2][0] = symbol;
-		else if (n == 8)
-			gameBoard[2][1] = symbol;
-		else if (n == 9)
-			gameBoard[2][2] = symbol;
+		
+		/*
+		* Insert the necessary code to update the game board to either an X or an O depending on the passed parameter (the user's number)
+		* This will take multiple lines of code
+		*/
 
-		isXturn = !isXturn;
-		numOfTurns += 1;
+		//We've updated the game board, so it's time to change whose turn it is. 
+		isXturn = _____________;
 	}
-
 }
